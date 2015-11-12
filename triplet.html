@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+		<title>Links Platfrom - Link</title>
+		<link rel="stylesheet" type="text/css" href="style.css">
+	</head>
+	<body>
+		<svg viewBox="0.2 0.2 0.6 0.6">
+			<svg x="0" y="0" width="1" height="1">
+				<circle id="c0" cx="0.5" cy="0.5" r="0.25" />
+				<circle id="c1" cx="0.383975" cy="0.433013" r="0.116025"></circle>
+				<circle id="c2" cx="0.616025" cy="0.433013" r="0.116025"></circle>
+				<circle id="c3" cx="0.5" cy="0.633975" r="0.116025"></circle>
+			</svg>
+		</svg>
+		
+		<!--
+		<script>
+			var c0 = document.getElementById("c0");
+			var c1 = document.getElementById("c1");
+			var c2 = document.getElementById("c2");
+			var c3 = document.getElementById("c3");
+		
+			// Outer Circle
+			var R = c0.r.baseVal.value;
+			// Outer Circle's Center
+			var X = c0.cx.baseVal.value;
+			var Y = c0.cy.baseVal.value;
+			
+			var sin60 = Math.sin(60/180*Math.PI);
+
+			var r = R * sin60 / (1 + sin60);
+			
+			c1.r.baseVal.value = r;
+			c2.r.baseVal.value = r;
+			c3.r.baseVal.value = r;
+			
+			var cx1 = X - r;
+			
+			c1.cx.baseVal.value = cx1;
+			
+			var cx2 = X + r;
+			
+			c2.cx.baseVal.value = cx2;
+			
+			var r0 = r/sin60;
+			
+			var cy3 = Y + r0;
+			
+			c3.cy.baseVal.value = cy3;
+			
+			var cos60 = Math.cos(60/180*Math.PI);
+			
+			var cy12 = Y - cos60 * r0;
+			
+			c1.cy.baseVal.value = cy12;
+			c2.cy.baseVal.value = cy12;
+		</script>
+		-->
+	</body>
+</html>
