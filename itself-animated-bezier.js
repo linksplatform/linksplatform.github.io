@@ -3,10 +3,10 @@ var w = 300,
     t = .5,
     delta = .01,
     padding = 10,
-    points = [{x: 150, y: 150}, {x: 0, y: 0}, {x: 0, y: 300}, {x: 300, y: 0}, {x: 300, y: 300}, {x: 150, y: 150}],
+    points = [{x: 150, y: 150}, {x: 0, y: 0}, {x: 0, y: 300}, {x: 150, y: 150}, {x: 300, y: 0}, {x: 300, y: 300}, {x: 150, y: 150}],
     bezier = {},
     line = d3.svg.line().x(x).y(y),
-    n = 5,
+    n = 6,
     stroke = d3.scale.category20b(),
     orders = d3.range(2, n + 2);
 
