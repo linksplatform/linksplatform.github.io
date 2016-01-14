@@ -1,0 +1,83 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset=utf-8 />
+    <meta name="viewport" content="user-scalable=no, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, minimal-ui">
+    <title>Compound nodes</title>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+    <script src="http://cytoscape.github.io/cytoscape.js/api/cytoscape.js-latest/cytoscape.min.js"></script>
+    <script src="https://cdn.rawgit.com/cpettitt/dagre/v0.7.4/dist/dagre.min.js"></script>
+    <script src="https://cdn.rawgit.com/cytoscape/cytoscape.js-dagre/1.1.2/cytoscape-dagre.js"></script>
+    <style>
+        #cy {
+            height: 100%;
+            width: 100%;
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+    </style>
+    <script>
+        $(function () {
+            var cy = cytoscape({
+                container: document.getElementById('cy'),
+
+                style: [
+                  {
+                      selector: 'node',
+                      css: {
+                          'background-color': '#18e018',
+                      }
+                  },
+                  {
+                      selector: '$node > node',
+                      css: {
+                          'background-color': '#05bb05',
+                          'opacity': '0.8'
+                      }
+                  },
+                  {
+                      selector: 'edge',
+                      css: {
+                          'target-arrow-shape': 'triangle'
+                      }
+                  }
+                ],
+
+                elements: {
+                    nodes: [{}, {}]
+                },
+
+                layout: {
+                    name: 'dagre'
+                }
+            });
+
+            cy.on('taphold', 'node', function (evt) {
+                var node = evt.cyTarget;
+
+                var sourceId = node.id() + "_source";
+                var targetId = node.id() + "_target";
+                var edgeId = sourceId + "->" + targetId;
+
+                if (node.children().length === 0) {
+                    cy.add([
+                        { group: "nodes", data: { id: sourceId, name: node.id(), parent: node.id() } },
+                        { group: "nodes", data: { id: targetId, name: node.id(), parent: node.id() } },
+                        { group: "edges", data: { id: edgeId, source: sourceId, target: targetId } }
+                    ]);
+                }
+                else {
+                    cy.remove('node#' + sourceId);
+                    cy.remove('node#' + targetId);
+                }
+
+                cy.layout({ name: 'dagre' });
+            });
+        });
+    </script>
+</head>
+<body>
+    <div id="cy"></div>
+</body>
+</html>
