@@ -1,0 +1,99 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset=utf-8 />
+    <meta name="viewport" content="user-scalable=no, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, minimal-ui">
+    <title>Intermediate (expandable & collapsible) links</title>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+    <script src="http://cytoscape.github.io/cytoscape.js/api/cytoscape.js-latest/cytoscape.min.js"></script>
+    <script src="https://cdn.rawgit.com/cpettitt/dagre/v0.7.4/dist/dagre.min.js"></script>
+    <script src="https://cdn.rawgit.com/cytoscape/cytoscape.js-dagre/1.1.2/cytoscape-dagre.js"></script>
+    <style>
+        #cy
+        {
+            height: 100%;
+            width: 100%;
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+    </style>
+    <script>
+        $(function () {
+            var cy = cytoscape({
+                container: document.getElementById('cy'),
+
+                style: [
+                  {
+                      selector: 'node',
+                      css: {
+                          'background-color': 'data(color)'
+                      }
+                  },
+                  {
+                      selector: 'edge',
+                      css: {
+                          'target-arrow-shape': 'triangle'
+                      }
+                  }
+                ],
+
+                elements: {
+                    nodes: [{ data: { id: 'a', color: '#18e018' } }, { data: { id: 'b', color: '#1818e0' } }]
+                },
+
+                layout: {
+                    name: 'dagre'
+                }
+            });
+
+            function generateSourceId(node) {
+                return node.id() + "_s";
+            }
+
+            function generateTargetId(node) {
+                return node.id() + "_t";
+            }
+
+            function cascadeRemove(nodes) {
+                for (var i = 0; i < nodes.length; i++)
+                {
+                    var node = nodes[i];
+
+                    cascadeRemove(cy.$('node#' + generateSourceId(node)));
+                    cascadeRemove(cy.$('node#' + generateTargetId(node)));
+
+                    cy.remove(node);
+                }
+            }
+
+            cy.on('taphold', 'node', function (evt) {
+                var node = evt.cyTarget;
+
+                var sourceId = generateSourceId(node);
+                var targetId = generateTargetId(node);
+                var edgeFromSourceId = sourceId + "-" + node.id();
+                var edgeToTargetId = node.id() + "-" + targetId;
+
+                if (node.edgesWith('#' + sourceId).length === 0
+                &&  node.edgesWith('#' + targetId).length === 0) {
+                    cy.add([
+                        { group: "nodes", data: { id: sourceId, color: node.data('color') } },
+                        { group: "nodes", data: { id: targetId, color: node.data('color') } },
+                        { group: "edges", data: { id: edgeFromSourceId, source: sourceId, target: node.id() } },
+                        { group: "edges", data: { id: edgeToTargetId, source: node.id(), target: targetId } }
+                    ]);
+                } else {
+                    cascadeRemove(cy.$('node#' + sourceId));
+                    cascadeRemove(cy.$('node#' + targetId));
+                }
+
+                cy.layout({ name: 'dagre' });
+            });
+        });
+    </script>
+</head>
+<body>
+    <div id="cy"></div>
+</body>
+</html>
