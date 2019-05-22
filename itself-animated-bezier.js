@@ -6,9 +6,8 @@ var w = 300,
     points = [{x: 150, y: 150}, {x: 0, y: 0}, {x: 0, y: 300}, {x: 150, y: 150}, {x: 300, y: 0}, {x: 300, y: 300}, {x: 150, y: 150}],
     bezier = {},
     line = d3.svg.line().x(x).y(y),
-    n = 6,
     stroke = d3.scale.category20b(),
-    orders = d3.range(n + 2, n + 2);
+    orders = [7];
 
 var vis = d3.select("#vis").selectAll("svg")
     .data(orders)
