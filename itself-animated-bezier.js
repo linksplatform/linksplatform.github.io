@@ -1,6 +1,6 @@
 var padding = 10,
-    w = window.innerWidth - 2 * padding,
-    h = window.innerHeight - 2 * padding,
+    w = document.body.clientWidth - 2 * padding,
+    h = document.body.clientHeight - 2 * padding,
     minimumDimension = Math.min(w, h),
     xOffset = w > minimumDimension ? ((w - minimumDimension) / 2) : 0,
     yOffset = h > minimumDimension ? ((h - minimumDimension) / 2) : 0,
