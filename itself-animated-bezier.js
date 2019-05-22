@@ -8,7 +8,7 @@ var w = 300,
     line = d3.svg.line().x(x).y(y),
     n = 6,
     stroke = d3.scale.category20b(),
-    orders = d3.range(2, n + 2);
+    orders = d3.range(n + 2, n + 2);
 
 var vis = d3.select("#vis").selectAll("svg")
     .data(orders)
