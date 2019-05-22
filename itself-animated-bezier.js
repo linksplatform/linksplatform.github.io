@@ -1,13 +1,23 @@
 var padding = 10,
     w = window.innerWidth - 2 * padding,
     h = window.innerHeight - 2 * padding,
+    minimumDimension = Math.min(w, h),
+    xOffset = w > minimumDimension ? ((w - minimumDimension) / 2) : 0,
+    yOffset = h > minimumDimension ? ((h - minimumDimension) / 2) : 0,
     t = .5,
     delta = .01,
-    points = [{x: 150, y: 150}, {x: 0, y: 0}, {x: 0, y: 300}, {x: 150, y: 150}, {x: 300, y: 0}, {x: 300, y: 300}, {x: 150, y: 150}],
+    points = [{x: 0.5, y: 0.5}, {x: 0, y: 0}, {x: 0, y: 1}, {x: 0.5, y: 0.5}, {x: 1, y: 0}, {x: 1, y: 1}, {x: 0.5, y: 0.5}],
     bezier = {},
     line = d3.svg.line().x(x).y(y),
     stroke = d3.scale.category20b(),
     orders = [7];
+
+for (var i = 0; i < points.length; i++)
+{
+    var point = points[i];
+    point.x = xOffset + point.x * minimumDimension;
+    point.y = yOffset + point.y * minimumDimension;
+}
 
 var vis = d3.select("#vis").selectAll("svg")
     .data(orders)
