@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Links Platfrom - Link</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body onclick="clearCanvas(); drawCirclesRing(++window.circles);">
+    <svg viewBox="0.2 0.2 0.6 0.6">
+        <svg id="canvas" x="0" y="0" width="1" height="1">
+        </svg>
+    </svg>
+    <script>
+		function createCircle(x, y, r) {
+			var circle = document.createElementNS("http://www.w3.org/2000/svg", "circle");
+			circle.setAttribute('cx', "" + x);
+			circle.setAttribute('cy', "" + y);
+			circle.setAttribute('r', "" + r);
+			return circle;
+		}
+
+		var canvas = document.getElementById("canvas");
+
+		function clearCanvas() {
+			while (canvas.firstChild) {
+				canvas.firstChild.remove();
+			}
+		}
+
+		var outerRadius = 0.25;
+		var X = 0.5;
+		var Y = 0.5;
+
+		function getShift(circles) {	
+			if (circles % 2 == 1)
+			{
+				return shilfValue = Math.PI / 2;
+			}
+			else if (circles % 4 == 2)
+			{
+				return shilfValue = 0;
+			}
+			else
+			{
+				return shilfValue = Math.PI / circles;
+			}
+		}
+
+		function drawCirclesRing(circles) {
+			var radius = outerRadius * Math.sin(Math.PI / circles) / (1 + Math.sin(Math.PI / circles));
+
+			var circle = createCircle(X, Y, outerRadius);
+			canvas.appendChild(circle);
+
+			console.log(radius);
+			console.log(circles * radius * 2);
+
+			for (var i = 0; i < circles; i++) {
+				var angle = getShift(circles) + i * Math.PI * 2 / circles;
+				
+				var circle = createCircle(X + (outerRadius - radius) * Math.cos(angle), Y + (outerRadius - radius) * Math.sin(angle), radius);
+				canvas.appendChild(circle);
+			}
+		}
+
+		window.circles = 2;
+		drawCirclesRing(window.circles);
+    </script>
+</body>
+</html>
