@@ -1,0 +1,29 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<!DOCTYPE svg PUBLIC '-//W3C//DTD SVG 1.1//EN' 'http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd'>
+<!-- Animated using aniGen version 0.8.1 Quality of Life - http://anigen.org -->
+<svg xmlns:anigen="http://www.anigen.org/namespace" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:svg="http://www.w3.org/2000/svg" xmlns="http://www.w3.org/2000/svg" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" id="svg2" width="1828px" height="1130px" version="1.1" preserveAspectRatio="xMidYMid" viewBox="0 0 1828 1130" anigen:version="0.8.1" sodipodi:docname="animation (3).svg" inkscape:version="0.92.5 (2060ec1f9f, 2020-04-08)" inkscape:label="world" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <defs id="defs1559"></defs>
+  <sodipodi:namedview id="base" bordercolor="#666666" borderopacity="1" anigen:loop="4" inkscape:cx="1404.9402207892142" inkscape:cy="-97.05205263348125" inkscape:zoom="0.24999999999999992" showgrid="false" inkscape:window-width="3840" inkscape:window-height="2021" inkscape:window-x="0" inkscape:window-y="48" inkscape:window-maximized="1" inkscape:current-layer="layer1"></sodipodi:namedview>
+  <metadata id="metadata7">
+    <rdf:rdf id="rdf:rdf1744">
+      <cc:work rdf:about="" id="cc:work8613">
+        <dc:format id="dc:format5267">image/svg+xml</dc:format>
+        <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage" id="dc:type4558"></dc:type>
+      </cc:work>
+    </rdf:rdf>
+    <rdf:rdf id="rdf:rdf1879">
+      <cc:work rdf:about="" id="cc:work945">
+        <dc:format id="dc:format1135">image/svg+xml</dc:format>
+        <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage" id="dc:type2711"></dc:type>
+        <dc:title id="dc:title7911"></dc:title>
+      </cc:work>
+    </rdf:rdf>
+  </metadata>
+  <g id="layer1" transform="translate(0,77.637847)" inkscape:label="world">
+    <rect id="blackBoard" width="914" height="1130" x="0" y="-77.638" style="fill:#000000;fill-opacity:1;stroke:none" inkscape:label="blackBoard"></rect>
+    <rect id="whiteBoard" width="914" height="1130" x="914" y="-77.638" style="fill:#ffffff;fill-opacity:1;stroke:none" inkscape:label="whiteBoard"></rect>
+    <path id="dot1" stroke-miterlimit="4" d="M 1370.8954 487.36215 L 1371.1047 487.36215" inkscape:label="dot1" inkscape:connector-curvature="0" style="fill:none;stroke:#000000;stroke-width:40;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1">
+      <animate attributeType="auto" attributeName="stroke-width" values="20;0;40;40" calcMode="spline" keyTimes="0;0.003333500027656555;0.1;1" keySplines=".25 0 .75 1;.25 0 .75 1;0 0 1 1" dur="10s" begin="0s" repeatCount="1" additive="replace" accumulate="none" fill="freeze" id="appearance"></animate>
+    <animateTransform attributeName="transform" attributeType="auto" type="translate" values="0 0;0 0;-939 0;-939 0" calcMode="spline" keyTimes="0;0.5001159906387329;0.75;1" keySplines="0 0 1 1;.25 0 .75 1;0 0 1 1" dur="4s" begin="0s" repeatCount="1" additive="sum" accumulate="none" fill="freeze" id="leftMovement"></animateTransform><animate attributeType="auto" attributeName="stroke" values="rgb(0, 0, 0);#000000;#ffffff;rgb(0, 0, 0)" calcMode="spline" keyTimes="0;0.24909980297088624;0.24909980297088624;1" keySplines="0 0 1 1;0 0 1 1;0 0 1 1" dur="10s" begin="0s" repeatCount="1" additive="replace" accumulate="none" fill="freeze" id="animate2576"></animate></path>
+  </g>
+</svg>
