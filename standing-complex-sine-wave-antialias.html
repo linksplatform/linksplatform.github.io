@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Standing complex sine wave</title>
+    <style>
+        body { margin: 0; }
+        canvas { display: block; }
+    </style>
+</head>
+<body>
+    <script src="https://rawcdn.githack.com/mrdoob/three.js/r110/build/three.js"></script>
+    <script src="https://rawcdn.githack.com/mrdoob/three.js/r110/examples/js/controls/OrbitControls.js"></script>
+    <script>
+        const scene = new THREE.Scene();
+        const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+        const renderer = new THREE.WebGLRenderer({ antialias: true });
+        const controls = new THREE.OrbitControls(camera, renderer.domElement);
+
+        let time = 0;
+        let wave;
+
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        document.body.appendChild(renderer.domElement);
+
+        function createAxis(color, start, end) {
+            const geometry = new THREE.Geometry();
+            geometry.vertices.push(start);
+            geometry.vertices.push(end);
+
+            const material = new THREE.LineBasicMaterial({ color: color });
+            const line = new THREE.Line(geometry, material);
+            scene.add(line);
+
+            const direction = new THREE.Vector3().subVectors(end, start).normalize();
+            const arrow = new THREE.ArrowHelper(direction, end, 0.5, color, 0.2, 0.2);
+            scene.add(arrow);
+        }
+
+        const timeStart = -60;
+        const timeEnd = 60;
+
+        let offset = 1;
+
+        // Red X Axis
+        createAxis(0xff0000, new THREE.Vector3(timeStart, 0, 0), new THREE.Vector3(timeEnd, 0, 0));
+
+        // Green Y Axis
+        createAxis(0x00ff00, new THREE.Vector3(0, -5, 0), new THREE.Vector3(0, 5, 0));
+
+        // Blue Z Axis
+        createAxis(0x0000ff, new THREE.Vector3(0, 0, -5), new THREE.Vector3(0, 0, 5));
+
+        camera.position.z = 5;
+
+        const animate = () => {
+            requestAnimationFrame(animate);
+
+            if (wave) {
+                scene.remove(wave);
+            }
+
+            const waveGeometry = new THREE.Geometry();
+            const waveMaterial = new THREE.LineBasicMaterial({ color: 0xffff00 });
+
+            waveGeometry.vertices = [];
+
+            for(let x = timeStart; x <= time % (timeEnd - timeStart) + timeStart; x += 0.1) {
+                const y = Math.sin(x / 5) * 5;
+                const z = Math.cos(x / 5) * 5;
+                waveGeometry.vertices.push(new THREE.Vector3(x, z, y));
+            }
+
+            time += 0.05;
+
+            wave = new THREE.Line(waveGeometry, waveMaterial);
+            scene.add(wave);
+
+            controls.update();
+            renderer.render(scene, camera);
+        };
+
+        animate();
+    </script>
+</body>
+</html>
