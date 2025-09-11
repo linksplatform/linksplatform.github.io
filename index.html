@@ -1,24 +1,279 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
-	<head>
-		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-		<title>Links Platform</title>
-		<link rel="stylesheet" type="text/css" href="style.css">
-	</head>
-	<body>
-		<svg viewBox="0.2 0.2 0.6 0.6">
-			<svg x="0" y="0" width="1" height="1">
-				<circle cx="0.5" cy="0.5" r="0.25" />
-				<a href="https://github.com/Konard/LinksPlatform">
-					<circle cx="0.375" cy="0.5" r="0.145" />
-					<image href="./GitHub.svg" x="0.2365" y="0.364" height="0.2772" width="0.2772" />
-				</a>
-				<a href="http://linksplatform.github.io/ccc">
-					<circle cx="0.640" cy="0.5" r="0.055" class="eye" />
-					<circle cx="0.600" cy="0.5" r="0.015" class="eye" />
-				</a>
-			</svg>
-		</svg>
-	</body>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Links Platform - Visualizations</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f5f5f5;
+        }
+        
+        h1 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 30px;
+        }
+        
+        .visualizations-table {
+            width: 100%;
+            border-collapse: collapse;
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        
+        .visualizations-table th {
+            background-color: #4a4a4a;
+            color: white;
+            padding: 15px;
+            text-align: left;
+            font-weight: bold;
+        }
+        
+        .visualizations-table td {
+            padding: 15px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .visualizations-table tr:hover {
+            background-color: #f9f9f9;
+        }
+        
+        .visualization-title {
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 5px;
+        }
+        
+        .visualization-description {
+            color: #666;
+            font-size: 14px;
+            margin-bottom: 10px;
+        }
+        
+        .visualization-iframe {
+            width: 300px;
+            height: 200px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+        }
+        
+        .links-column {
+            width: 150px;
+        }
+        
+        .preview-column {
+            width: 320px;
+        }
+        
+        .open-link {
+            display: inline-block;
+            padding: 8px 16px;
+            background-color: #007bff;
+            color: white;
+            text-decoration: none;
+            border-radius: 4px;
+            font-size: 14px;
+            transition: background-color 0.3s;
+        }
+        
+        .open-link:hover {
+            background-color: #0056b3;
+        }
+        
+        @media (max-width: 768px) {
+            .visualizations-table,
+            .visualizations-table tbody,
+            .visualizations-table th,
+            .visualizations-table td,
+            .visualizations-table tr {
+                display: block;
+            }
+            
+            .visualizations-table th {
+                display: none;
+            }
+            
+            .visualizations-table tr {
+                border: 1px solid #ddd;
+                margin-bottom: 10px;
+                border-radius: 4px;
+                background-color: white;
+            }
+            
+            .visualizations-table td {
+                border: none;
+                position: relative;
+                padding-left: 120px;
+            }
+            
+            .visualizations-table td:before {
+                content: attr(data-label);
+                position: absolute;
+                left: 15px;
+                width: 100px;
+                font-weight: bold;
+                color: #333;
+            }
+            
+            .visualization-iframe {
+                width: 100%;
+                max-width: 300px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>Links Platform Visualizations</h1>
+    
+    <table class="visualizations-table">
+        <thead>
+            <tr>
+                <th>Title & Description</th>
+                <th class="preview-column">Preview</th>
+                <th class="links-column">Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td data-label="Title">
+                    <div class="visualization-title">Doublet Animation</div>
+                    <div class="visualization-description">Animated SVG showing doublet link structure</div>
+                </td>
+                <td data-label="Preview" class="preview-column">
+                    <iframe src="animation.html" class="visualization-iframe" title="Doublet Animation"></iframe>
+                </td>
+                <td data-label="Actions" class="links-column">
+                    <a href="animation.html" target="_blank" class="open-link">Open Full View</a>
+                </td>
+            </tr>
+            <tr>
+                <td data-label="Title">
+                    <div class="visualization-title">Circles Ring</div>
+                    <div class="visualization-description">Interactive circles arrangement in a ring pattern</div>
+                </td>
+                <td data-label="Preview" class="preview-column">
+                    <iframe src="circles-ring.html" class="visualization-iframe" title="Circles Ring"></iframe>
+                </td>
+                <td data-label="Actions" class="links-column">
+                    <a href="circles-ring.html" target="_blank" class="open-link">Open Full View</a>
+                </td>
+            </tr>
+            <tr>
+                <td data-label="Title">
+                    <div class="visualization-title">Compound Links</div>
+                    <div class="visualization-description">Expandable and collapsible compound link structures using Cytoscape</div>
+                </td>
+                <td data-label="Preview" class="preview-column">
+                    <iframe src="cytoscape-compound.html" class="visualization-iframe" title="Compound Links"></iframe>
+                </td>
+                <td data-label="Actions" class="links-column">
+                    <a href="cytoscape-compound.html" target="_blank" class="open-link">Open Full View</a>
+                </td>
+            </tr>
+            <tr>
+                <td data-label="Title">
+                    <div class="visualization-title">Intermediate Links</div>
+                    <div class="visualization-description">Intermediate expandable and collapsible link structures</div>
+                </td>
+                <td data-label="Preview" class="preview-column">
+                    <iframe src="cytoscape-intermediate.html" class="visualization-iframe" title="Intermediate Links"></iframe>
+                </td>
+                <td data-label="Actions" class="links-column">
+                    <a href="cytoscape-intermediate.html" target="_blank" class="open-link">Open Full View</a>
+                </td>
+            </tr>
+            <tr>
+                <td data-label="Title">
+                    <div class="visualization-title">Closed Link (Itself)</div>
+                    <div class="visualization-description">Self-referential link visualization</div>
+                </td>
+                <td data-label="Preview" class="preview-column">
+                    <iframe src="itself.html" class="visualization-iframe" title="Closed Link"></iframe>
+                </td>
+                <td data-label="Actions" class="links-column">
+                    <a href="itself.html" target="_blank" class="open-link">Open Full View</a>
+                </td>
+            </tr>
+            <tr>
+                <td data-label="Title">
+                    <div class="visualization-title">Link Doublet</div>
+                    <div class="visualization-description">Basic doublet link structure</div>
+                </td>
+                <td data-label="Preview" class="preview-column">
+                    <iframe src="link.html" class="visualization-iframe" title="Link Doublet"></iframe>
+                </td>
+                <td data-label="Actions" class="links-column">
+                    <a href="link.html" target="_blank" class="open-link">Open Full View</a>
+                </td>
+            </tr>
+            <tr>
+                <td data-label="Title">
+                    <div class="visualization-title">Moving Complex Sine Wave</div>
+                    <div class="visualization-description">Animated sine wave visualization</div>
+                </td>
+                <td data-label="Preview" class="preview-column">
+                    <iframe src="moving-complex-sine-wave.html" class="visualization-iframe" title="Moving Complex Sine Wave"></iframe>
+                </td>
+                <td data-label="Actions" class="links-column">
+                    <a href="moving-complex-sine-wave.html" target="_blank" class="open-link">Open Full View</a>
+                </td>
+            </tr>
+            <tr>
+                <td data-label="Title">
+                    <div class="visualization-title">Moving Complex Sine Wave (Antialias)</div>
+                    <div class="visualization-description">Antialiased version of the moving sine wave</div>
+                </td>
+                <td data-label="Preview" class="preview-column">
+                    <iframe src="moving-complex-sine-wave-antialias.html" class="visualization-iframe" title="Moving Complex Sine Wave Antialias"></iframe>
+                </td>
+                <td data-label="Actions" class="links-column">
+                    <a href="moving-complex-sine-wave-antialias.html" target="_blank" class="open-link">Open Full View</a>
+                </td>
+            </tr>
+            <tr>
+                <td data-label="Title">
+                    <div class="visualization-title">Standing Complex Sine Wave</div>
+                    <div class="visualization-description">Static sine wave pattern visualization</div>
+                </td>
+                <td data-label="Preview" class="preview-column">
+                    <iframe src="standing-complex-sine-wave.html" class="visualization-iframe" title="Standing Complex Sine Wave"></iframe>
+                </td>
+                <td data-label="Actions" class="links-column">
+                    <a href="standing-complex-sine-wave.html" target="_blank" class="open-link">Open Full View</a>
+                </td>
+            </tr>
+            <tr>
+                <td data-label="Title">
+                    <div class="visualization-title">Standing Complex Sine Wave (Antialias)</div>
+                    <div class="visualization-description">Antialiased version of the standing sine wave</div>
+                </td>
+                <td data-label="Preview" class="preview-column">
+                    <iframe src="standing-complex-sine-wave-antialias.html" class="visualization-iframe" title="Standing Complex Sine Wave Antialias"></iframe>
+                </td>
+                <td data-label="Actions" class="links-column">
+                    <a href="standing-complex-sine-wave-antialias.html" target="_blank" class="open-link">Open Full View</a>
+                </td>
+            </tr>
+            <tr>
+                <td data-label="Title">
+                    <div class="visualization-title">Triplet</div>
+                    <div class="visualization-description">Three-element link structure visualization</div>
+                </td>
+                <td data-label="Preview" class="preview-column">
+                    <iframe src="triplet.html" class="visualization-iframe" title="Triplet"></iframe>
+                </td>
+                <td data-label="Actions" class="links-column">
+                    <a href="triplet.html" target="_blank" class="open-link">Open Full View</a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</body>
 </html>
